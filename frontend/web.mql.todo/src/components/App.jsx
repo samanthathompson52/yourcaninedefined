@@ -22,10 +22,10 @@ function App() {
   const { currentUser, logOut } = useApp();
   return (
     <div className="App">
+      {currentUser ? (
       <AppBar position="sticky">
         <Toolbar color="secondary">
           <AppName />
-          {currentUser ? (
             <Button
               variant="contained"
               color="secondary"
@@ -35,9 +35,9 @@ function App() {
             >
               <Typography variant="button">Log Out</Typography>
             </Button>
-          ) : null}
         </Toolbar>
       </AppBar>
+      ) :  <AppName />}
       {currentUser ? <TodoItemsPage /> : <WelcomePage />}
     </div>
   );

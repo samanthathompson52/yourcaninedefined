@@ -55,7 +55,7 @@ export function WelcomePage() {
   };
 
   return (
-    <Container maxWidth="sm" className="main-container text-center">
+    <Container maxWidth="sm" className="main-container">
        <Typography component="h1" variant="h3" align="center">
           Train with Lisa Bataska
         </Typography>
