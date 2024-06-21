@@ -55,11 +55,11 @@ export function WelcomePage() {
   };
 
   return (
-    <Container maxWidth="sm" className="main-container">
-       <Typography component="h2" variant="h4">
-            Train with Lisa Bataska
-          </Typography>
-      <Card className="auth-card" variant="outlined">
+    <Container maxWidth="sm" className="main-container text-center">
+       <Typography component="h1" variant="h3" align="center">
+          Train with Lisa Bataska
+        </Typography>
+      <Card className="auth-card" variant="sign-in">
         <form
           className="auth-form"
           onSubmit={(e) => {
