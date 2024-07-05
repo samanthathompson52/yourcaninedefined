@@ -11,6 +11,7 @@ export const colors = {
     500: "#6200EE",
     A400: "#9795F9",
   },
+  white: "#FFFFFF",
   orange,
   red,
   blue,
