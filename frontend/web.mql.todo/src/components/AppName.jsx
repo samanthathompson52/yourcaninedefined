@@ -9,7 +9,6 @@ export function AppName() {
       component="img"
       sx={{
         margin: 2,
-        position: "absolute",
       }}
       src="/logo.webp"
     />  
