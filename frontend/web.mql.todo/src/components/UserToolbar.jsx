@@ -10,6 +10,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
+import VideoIcon from '@mui/icons-material/Videocam';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
@@ -17,10 +18,10 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import DashboardIcon from '@mui/icons-material/Home';
 import UserIcon from '@mui/icons-material/Person';
+import DaySchoolIcon from '../../public/icons/DaySchoolIcon.svg';
+
 import { AppName } from './AppName';
 import { useApp } from "./RealmApp";
 import { Link } from "react-router-dom";
@@ -60,21 +61,18 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 const AdminMenuOptions = [
   { text: 'Dashboard', link: '/dashboard', icon: <DashboardIcon /> },
   { text: 'Users', link: '/users', icon: <UserIcon /> },
-  { text: 'Settings', link: '/settings', icon: <UserIcon /> },
+  { text: 'Videos', link: '/videos', icon: <VideoIcon /> },
+  { text: 'DaySchool', link: '/dayschool', icon: <DaySchoolIcon /> },
   { text: 'Logout', link: '/logout', icon: <UserIcon /> },
 ]
 
 const UserMenuOptions = [
   { text: 'Dashboard', link: '/dashboard', icon: <DashboardIcon /> },
   { text: 'Users', link: '/users', icon: <UserIcon /> },
-  { text: 'Settings', link: '/settings', icon: <UserIcon /> },
+  { text: 'Videos', link: '/videos', icon: <VideoIcon /> },
+  { text: 'DaySchool', link: '/dayschool', icon: <DaySchoolIcon /> },
   { text: 'Logout', link: '/logout', icon: <UserIcon /> },
 ]
-
-function getMenuItems() {
-  console.log(currentUser);
-  return currentUser ? AdminMenuOptions : UserMenuOptions;
-}
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
@@ -120,6 +118,11 @@ export function UserToolbar() {
     setOpen(!open);
   };
 
+  const getMenuItems = () => {
+    console.log(AdminMenuOptions);
+    return currentUser ? AdminMenuOptions : UserMenuOptions;
+  }
+
   return (
     <Box sx={{ display: 'flex' }}>
       <AppBar position="fixed" open={open} sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
@@ -146,8 +149,8 @@ export function UserToolbar() {
         </DrawerHeader>
         <Divider />
         <List>
-          {getMenuItems().map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
+          {getMenuItems().map((item, index) => (
+            <ListItem key={item.text} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
                 sx={{
                   minHeight: 48,
@@ -162,9 +165,9 @@ export function UserToolbar() {
                     justifyContent: 'center',
                   }}
                 >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  {item.icon}
                 </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+                <ListItemText primary={item.text} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
             </ListItem>
           ))}
